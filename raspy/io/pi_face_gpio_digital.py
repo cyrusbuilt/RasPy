@@ -25,7 +25,7 @@ except ImportError:
         __bus = None
         __speed = None
         __maxSpeed = 0
-        __buf = []
+        __buf = list()
 
         def __init__(self):
             """Constructor."""
@@ -43,14 +43,14 @@ except ImportError:
         def writebytes(self, buf):
             """Write a buffer of values to the bus.
 
-            :param array buf: The buffer to write.
+            :param list buf: The buffer to write.
             """
             self.__buf = buf
 
         def xfer(self, buf, speed):
             """Transfer a buffer of values and read the result.
 
-            :param array buf: The buffer to send.
+            :param list buf: The buffer to send.
             :param int speed: The transfer speed.
             :returns: The result buffer.
             :rtype: tuple
