@@ -1,5 +1,10 @@
+flake8
 pylint
 nose2
 pyee
 tornado
 psutil
+sphinx
+sphinxjp.themes.basicstrap
+sphinx-bootstrap-theme
+m2r

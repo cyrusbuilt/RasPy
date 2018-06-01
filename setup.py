@@ -1,26 +1,42 @@
 #!/usr/bin/env python
 
-try:
-    from setuptools import setup
-except ImportError:
-    from distutils.core import setup
+import sys
+from io import open
+from setuptools import setup, find_packages
+from raspy import RASPY_FRAMEWORK_VER
+
+
+if sys.version_info < (2, 7):
+    print("ERROR: python version < 2.7 is not supported.")
+    sys.exit(1)
+
+install_requires = [
+    'pyee',
+    'tornado',
+    'psutil',
+    'spidev'
+]
 
 setup(
-    name='RasPy',
-    version='0.1',
+    name='raspy',
+    version=RASPY_FRAMEWORK_VER,
+    packages=find_packages(),
+    install_requires=install_requires,
+    extras_require={
+        'doc': ['sphinx', 'sphinxjp.themes.basicstrap', 'sphinx-bootstrap-theme'],
+        'tests': ['nose2']
+    },
     description='Raspberry Pi Framework for Python',
-    url='',
+    long_description=open('README.md', encoding='utf-8').read(),
+    url='https://github.com/cyrusbuilt/raspy',
     author='CyrusBuilt',
     author_email='cyrusbuilt@gmail.com',
-    license='GPLv2',
+    license='MIT',
     zip_safe=False,
-    packages=[
-        'RasPy'
-    ],
-    package_dir={
-
-    },
-    cmdclass={
-
+    include_package_data=True,
+    exclude_package_data={'': ['.gitignore']},
+    classifiers={
+        "Programming Language :: Python :: 2",
+        "Topic :: Scientific/Engineering"
     }
 )
