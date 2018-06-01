@@ -583,7 +583,7 @@ class PiFaceGpioDigital(PiFaceGPIO):
         :raises: raspy.ObjectDisposedException if this instance has been
         disposed.
         """
-        self.write(self.__get_initial_pin_value())
+        self.write(PiFaceGPIO.get_initial_pin_value(self))
 
     def __set_pull_resistance_a(self, resistance):
         """Set the pin pull-up/down resistance for port A.

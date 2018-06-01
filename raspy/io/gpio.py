@@ -230,7 +230,7 @@ class Gpio(Pin):
 
         self.__revision = revision
 
-    def __get_initial_pin_value(self):
+    def get_initial_pin_value(self):
         """Get the initial pin value.
 
         :returns: The initial pin value.
