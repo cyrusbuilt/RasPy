@@ -58,11 +58,10 @@ except ImportError:
             self.__buf = buf
             self.__speed = speed
             ret_tup = ()
-            # noinspection PyTypeChecker
             for i in range(0, len(self.__buf)):
-                new_tup = (
-                    self.__buf[i]
-                )
+                lst = list()
+                lst.append(self.__buf[i])
+                new_tup = tuple(lst)
                 ret_tup += new_tup
             return ret_tup
 
