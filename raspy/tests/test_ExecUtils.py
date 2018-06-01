@@ -7,11 +7,10 @@ from raspy import exec_utils
 
 def test_execute_command():
     """Test execute_command method."""
-    cmd = "ping -c 1 127.0.0.1"
-    text = "bytes from"
+    cmd = 'echo "Hello World!"'
+    text = "Hello"
     if platform.system() == "Windows":
-        cmd = "ping -n 1 127.0.0.1"
-        text = "Reply from 127.0.0.1"
+        cmd = "echo Hello World!"
 
     newline = '\n'
     result = exec_utils.execute_command(cmd)
