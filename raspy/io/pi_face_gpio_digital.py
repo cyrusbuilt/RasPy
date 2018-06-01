@@ -562,7 +562,7 @@ class PiFaceGpioDigital(PiFaceGPIO):
         if p_mode is None:
             p_mode = p_mode.TRI
 
-        self.mode = p_mode
+        PiFaceGPIO.mode.fset(p_mode)
 
         # determine A or B port based on pin address
         if self.inner_pin.value < self.GPIO_B_OFFSET:
