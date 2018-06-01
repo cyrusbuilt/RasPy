@@ -17,4 +17,5 @@ def test_execute_command():
     result = exec_utils.execute_command(cmd)
     # noinspection PyTypeChecker
     output_str = newline.join(result)
+    print("DEBUG: " + output_str)
     assert string_utils.contains(output_str, text)

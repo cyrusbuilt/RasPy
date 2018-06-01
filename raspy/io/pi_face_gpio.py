@@ -18,26 +18,26 @@ class PiFaceGPIO(gpio.Gpio):
     """The name of the state changed event."""
 
     OUTPUTS = [
-        pi_face_pins.Output00,
-        pi_face_pins.Output01,
-        pi_face_pins.Output02,
-        pi_face_pins.Output03,
-        pi_face_pins.Output04,
-        pi_face_pins.Output05,
-        pi_face_pins.Output06,
-        pi_face_pins.Output07
+        pi_face_pins.Output00(),
+        pi_face_pins.Output01(),
+        pi_face_pins.Output02(),
+        pi_face_pins.Output03(),
+        pi_face_pins.Output04(),
+        pi_face_pins.Output05(),
+        pi_face_pins.Output06(),
+        pi_face_pins.Output07()
     ]
     """An array of all the PiFace outputs."""
 
     INPUTS = [
-        pi_face_pins.Input00,
-        pi_face_pins.Input01,
-        pi_face_pins.Input02,
-        pi_face_pins.Input03,
-        pi_face_pins.Input04,
-        pi_face_pins.Input05,
-        pi_face_pins.Input06,
-        pi_face_pins.Input07
+        pi_face_pins.Input00(),
+        pi_face_pins.Input01(),
+        pi_face_pins.Input02(),
+        pi_face_pins.Input03(),
+        pi_face_pins.Input04(),
+        pi_face_pins.Input05(),
+        pi_face_pins.Input06(),
+        pi_face_pins.Input07()
     ]
     """An array of all PiFace inputs."""
 

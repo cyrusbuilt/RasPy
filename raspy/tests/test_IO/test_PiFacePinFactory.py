@@ -18,7 +18,7 @@ def test_create_output_pin():
         return
 
     # noinspection PyTypeChecker
-    output = pi_face_pin_factory.create_output_pin(pi_face_pins.Output00, "test1")
+    output = pi_face_pin_factory.create_output_pin(pi_face_pins.Output00(), "test1")
     assert isinstance(output, PiFaceGpioDigital)
     assert output.pin_address == pi_face_pins.Output00.value
     assert output.mode == pin_mode.OUT
@@ -31,7 +31,7 @@ def test_create_input_pin():
         return
 
     # noinspection PyTypeChecker
-    inp = pi_face_pin_factory.create_input_pin(pi_face_pins.Input00, "test2")
+    inp = pi_face_pin_factory.create_input_pin(pi_face_pins.Input00(), "test2")
     assert isinstance(inp, PiFaceGpioDigital)
     assert inp.pin_address == pi_face_pins.Input00.value
     assert inp.mode == pin_mode.INPUT
