@@ -34,4 +34,4 @@ def test_create_input_pin():
     inp = pi_face_pin_factory.create_input_pin(pi_face_pins.Input00(), "test2")
     assert isinstance(inp, PiFaceGpioDigital)
     assert inp.address == pi_face_pins.Input00().value
-    assert inp.mode == pin_mode.INPUT
+    assert inp.mode == pin_mode.IN
