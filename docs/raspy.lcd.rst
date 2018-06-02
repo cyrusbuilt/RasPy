@@ -28,6 +28,14 @@ raspy.lcd.function\_set\_flags module
     :undoc-members:
     :show-inheritance:
 
+raspy.lcd.gpio\_lcd\_transfer\_provider\_standard module
+--------------------------------------------------------
+
+.. automodule:: raspy.lcd.gpio_lcd_transfer_provider_standard
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 raspy.lcd.lcd\_commands module
 ------------------------------
 

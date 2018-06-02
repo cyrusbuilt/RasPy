@@ -448,12 +448,12 @@ class LcdModule(Disposable):
         self.clear()
 
         # Set entry mode.
-        displayMode = display_entry_modes.ENTRY_RIGHT
+        display_mode = display_entry_modes.ENTRY_RIGHT
         if left_to_right:
-            displayMode = display_entry_modes.ENTRY_LEFT
+            display_mode = display_entry_modes.ENTRY_LEFT
 
-        displayMode |= display_entry_modes.ENTRY_SHIFT_DECREMENT
-        self.send_command(lcd_commands.ENTRY_MODE_SET | displayMode)
+        display_mode |= display_entry_modes.ENTRY_SHIFT_DECREMENT
+        self.send_command(lcd_commands.ENTRY_MODE_SET | display_mode)
 
     def dispose(self):
         """Release all managed resources used by this instance."""
