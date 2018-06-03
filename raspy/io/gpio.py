@@ -273,11 +273,7 @@ class Gpio(Pin):
         pass
 
     def dispose(self):
-        """Dispose managed resources.
-
-        In a subclass, performs application-defined tasks associated with
-        freeing, releasing, or resetting resources.
-        """
+        """Dispose managed resources."""
         if self.is_disposed:
             return
 
