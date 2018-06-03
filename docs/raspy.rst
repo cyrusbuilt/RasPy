@@ -6,6 +6,7 @@ Subpackages
 
 .. toctree::
 
+    raspy.components
     raspy.io
     raspy.lcd
     raspy.led

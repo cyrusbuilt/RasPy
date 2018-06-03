@@ -259,7 +259,7 @@ class GpioStandard(gpio.Gpio):
         self.__write(self.inner_pin, pin_state.HIGH)
         evt = PinStateChangeEvent(self.state, pin_state.HIGH, pin_addr)
         self.on_pin_state_change(evt)
-        super(GpioStandard, self).pulse(millis)
+        gpio.Gpio.pulse(self, millis)
         self.__write(self.inner_pin, pin_state.LOW)
         evt = PinStateChangeEvent(self.state, pin_state.LOW, pin_addr)
         self.on_pin_state_change(evt)
