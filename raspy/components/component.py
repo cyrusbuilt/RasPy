@@ -7,7 +7,7 @@ from raspy.disposable import Disposable
 class Component(Disposable):
     """A hardware abstraction component base class."""
 
-    def __init__(self, props):
+    def __init__(self, props=None):
         """Initialize a new instance of the Component class.
 
         :param dict props: A list of properties.
