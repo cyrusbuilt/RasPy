@@ -17,10 +17,6 @@ from raspy.sensors.ds1620_interface import DS1620Interface
 class DS1620(DS1620Interface):
     """Simple driver class for the Dallas Semiconductor DS1620 digital thermometer IC."""
 
-    __clock = None
-    __data = None
-    __reset = None
-
     def __init__(self, clock, data, reset):
         """Initialize a new instance of the raspy.sensors.ds1620.DS1620 class.
 

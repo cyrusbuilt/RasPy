@@ -16,12 +16,6 @@ class GpioLcdTransferProviderStandard(LcdTransferProvider):
     This is for the Micro Liquid Crystal Display.
     """
 
-    __fourBitMode = False
-    __registerSelectPort = None
-    __readWritePort = None
-    __enablePort = None
-    __dataPorts = None
-
     def __init__(self, d0, d1, d2, d3, d4, d5, d6, d7, four_bit_mode, rs, rw, enable):
         """Initialize a new instance of the GpioLcdTransferProviderStandard.
 

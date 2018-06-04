@@ -25,20 +25,6 @@ class LcdModule(Disposable):
     module via GPIO.
     """
 
-    __rowOffsets = [0x00, 0x40, 0x14, 0x54]
-    __provider = None
-    __showCursor = True
-    __blinkCursor = True
-    __visible = True
-    __backlight = True
-    __numLines = 0
-    __numColumns = 0
-    __displayFunction = 0
-    __sendQueue = list()
-    __ready = False
-    # __autoScroll = False  # TODO implement this?
-    # __currLine = 0        # TODO implement this?
-
     def __init__(self, provider):
         """Initialize a new instance of raspy.lcd.lcd_module.LcdModule class.
 
@@ -52,6 +38,17 @@ class LcdModule(Disposable):
             msg = "'provider' param bust be an LcdTransferProvider"
             raise IllegalArgumentException(msg)
 
+        self.__rowOffsets = [0x00, 0x40, 0x14, 0x54]
+        self.__showCursor = True
+        self.__blinkCursor = True
+        self.__visible = True
+        self.__backlight = True
+        self.__numLines = 0
+        self.__numColumns = 0
+        self.__sendQueue = list()
+        self.__ready = False
+        # self.__autoScroll = False  # TODO implement this?
+        # self._currLine = 0        # TODO implement this?
         self.__provider = provider
         if self.__provider.is_four_bit_mode:
             self.__displayFunction = (function_set_flags.FOUR_BIT_MODE |
