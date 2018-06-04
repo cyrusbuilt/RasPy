@@ -7,6 +7,7 @@ Subpackages
 .. toctree::
 
     raspy.components.buttons
+    raspy.components.buzzers
 
 Submodules
 ----------
