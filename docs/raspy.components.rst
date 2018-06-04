@@ -1,6 +1,13 @@
 raspy.components package
 ========================
 
+Subpackages
+-----------
+
+.. toctree::
+
+    raspy.components.buttons
+
 Submodules
 ----------
 

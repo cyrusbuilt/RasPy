@@ -193,7 +193,7 @@ class GpioStandard(gpio.Gpio):
         this instance has been disposed.
         """
         self.__export_pin(self.inner_pin, self.mode)
-        self.__write(self.inner_pin, self.__get_initial_pin_value())
+        self.__write(self.inner_pin, self.get_initial_pin_value())
 
     def __internal_read(self, gpio_num, gpio_name):
         """Read the value of the specified GPIO pin.

@@ -17,13 +17,6 @@ EVENT_GPIO_STATE_CHANGED = "gpioStateChanged"
 class Gpio(Pin):
     """Implemented by classes that represent GPIO pins on the Raspberry Pi."""
 
-    __pin = None
-    __mode = None
-    __initValue = None
-    __revision = None
-    __state = None
-    __emitter = None
-
     def __init__(self, pn, mode, value):
         """Initialize a new instance of raspy.io.Gpio.
 
@@ -55,6 +48,8 @@ class Gpio(Pin):
         :param str evt: The name of the event to register a handler for.
         :param function callback: The callback to execute when the event
         fires.
+        :raises: raspy.object_disposed_exception.ObjectDisposedException if
+        this instance is disposed.
         """
         if self.is_disposed:
             raise ObjectDisposedException("Gpio")
@@ -67,6 +62,8 @@ class Gpio(Pin):
         :param str evt: The name of the event to emit.
         :param object args: The arguments to pass to the event handlers
         (listeners).
+        :raises: raspy.object_disposed_exception.ObjectDisposedException if
+        this instance is disposed.
         """
         if self.is_disposed:
             raise ObjectDisposedException("Gpio")
@@ -139,7 +136,7 @@ class Gpio(Pin):
         if self.is_disposed:
             raise ObjectDisposedException("Gpio")
 
-        # Emit on a separate thread here? Or maybe just do that from within
+        # TODO Emit on a separate thread here? Or maybe just do that from within
         # emit() itself.
         self.emit(EVENT_GPIO_STATE_CHANGED, psce)
 

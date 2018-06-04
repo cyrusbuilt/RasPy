@@ -125,12 +125,6 @@ class TM16XXBase(Disposable):
     URL: http://code.google.com/p/tm1638-library/
     """
 
-    __is_active = False
-    __data = None
-    __clock = None
-    __strobe = None
-    __displays = 0
-
     def __init__(self, data, clock, strobe, displays, activate, intensity):
         """Initialize a new instance of the raspy.led.TM16XXBase class.
 
@@ -148,6 +142,7 @@ class TM16XXBase(Disposable):
         data, clock, or strobe pins are NonePin or undefined.
         """
         super(Disposable, self).__init__()
+        self.__is_active = False
         self.__data = data
         if self.__data is None:
             raise ArgumentNullException("'data' param cannot be NonePin.")
