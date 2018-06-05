@@ -14,7 +14,8 @@ install_requires = [
     'pyee',
     'tornado',
     'psutil',
-    'spidev'
+    'spidev',
+    'smbus2'
 ]
 
 setup(
@@ -38,5 +39,6 @@ setup(
     classifiers={
         "Programming Language :: Python :: 2",
         "Topic :: Scientific/Engineering"
-    }
+    },
+    keywords=['python', 'raspberrypi', 'linux']
 )

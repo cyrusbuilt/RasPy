@@ -1,6 +1,13 @@
 raspy.io package
 ================
 
+Subpackages
+-----------
+
+.. toctree::
+
+    raspy.io.i2c
+
 Submodules
 ----------
 

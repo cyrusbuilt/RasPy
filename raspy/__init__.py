@@ -8,7 +8,12 @@ This is the main module of the framework.
 RASPY_FRAMEWORK_VER = '0.1'
 """The raspy Framework version."""
 
+__author__ = "Cyrus Brunner"
+__author_email__ = "cyrusbuilt@gmail.com"
+__license__ = "MIT"
+__copyright__ = "Copyright (c) 2018, Cyrus Brunner"
 __all__ = (
+    "RASPY_FRAMEWORK_VER",
     "argument_null_exception",
     "bcm_2835_pwm_clock_divider",
     "board_revision",

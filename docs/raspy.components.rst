@@ -8,6 +8,7 @@ Subpackages
 
     raspy.components.buttons
     raspy.components.buzzers
+    raspy.components.gyroscopes
 
 Submodules
 ----------
