@@ -8,11 +8,9 @@ class Disposable(object):
     resources.
     """
 
-    __is_disposed = False
-
     def __init__(self):
         """Constructor."""
-        pass
+        self.__is_disposed = False
 
     def dispose(self):
         """Dispose managed resources.

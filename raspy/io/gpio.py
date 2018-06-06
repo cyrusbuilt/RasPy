@@ -24,7 +24,7 @@ class Gpio(Pin):
         :param int mode: The I/O pin mode.
         :param int value: The initial pin value.
         """
-        super(Gpio, self).__init__()
+        super(Pin, self).__init__()
         self.__emitter = EventEmitter()
 
         self.__pin = pn

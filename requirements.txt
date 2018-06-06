@@ -8,3 +8,4 @@ sphinx
 sphinxjp.themes.basicstrap
 sphinx-bootstrap-theme
 m2r
+smbus2

@@ -14,7 +14,7 @@ class FakeGpio(gpio.Gpio):
 
     def __init__(self, pin, mode, value):
         """ctor."""
-        super(FakeGpio, self).__init__(pin, mode, value)
+        gpio.Gpio.__init__(self, pin, mode, value)
         if value is None or not isinstance(value, (int, long)):
             value = pin_state.LOW
 

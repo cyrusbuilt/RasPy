@@ -10,9 +10,9 @@ def execute_command(command):
     Executes the specified command and returns the output.
 
     :param command: The command to execute.
-    :type command: string
+    :type command: str
     :returns: A string array containing each line of the output.
-    :rtype: array
+    :rtype: list
     """
     if string_utils.is_null_or_empty(command):
         return []
