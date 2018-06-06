@@ -7,6 +7,7 @@ Subpackages
 .. toctree::
 
     raspy.components.gyroscopes.analog_devices
+    raspy.components.gyroscopes.honeywell
 
 Submodules
 ----------

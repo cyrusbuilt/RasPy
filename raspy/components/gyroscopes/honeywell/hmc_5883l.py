@@ -1,4 +1,4 @@
-"""This module contains the ADXL345 type."""
+"""This module contains the HMC5883L type."""
 
 
 import itertools
@@ -8,6 +8,11 @@ from raspy.object_disposed_exception import ObjectDisposedException
 from raspy.components.gyroscopes import gyro_trigger_mode
 from raspy.components.gyroscopes.axis_gyroscope import AxisGyroscope
 from raspy.components.gyroscopes.multi_axis_gyro import MultiAxisGyro
+from raspy.components.gyroscopes.honeywell import hmc_5883l_output_rate
+from raspy.components.gyroscopes.honeywell import hmc_5883l_gains
+from raspy.components.gyroscopes.honeywell import measurement_modes
+from raspy.components.gyroscopes.honeywell import operation_mode
+from raspy.components.gyroscopes.honeywell import samples
 from raspy.io.io_exception import IOException
 from raspy.io.i2c.i2c_bus import I2CBus
 from raspy.pi_system import core_utils
@@ -17,18 +22,19 @@ from raspy.pi_system import system_info
 CALIBRATION_READS = 50
 CALIBRATION_SKIPS = 5
 
-ADXL345_ADDR = 0x53
-"""The default physical bus address of the ADXL345."""
+HMC5883L_ADDR = 0x1E
 
 
-class ADXL345(MultiAxisGyro):
-    """A device abstraction component for an Analog Devices ADXL345.
+class HMC5883L(MultiAxisGyro):
+    """A device abstraction component for a Honeywell HMC5883L.
 
-    The ADXL345 is a high resolution 3-axis accelerometer.
+    This is a 3-axis Digital Compass IC.
+    see See http://www51.honeywell.com/aero/common/documents/myaerospacecatalog-documents/
+    Defense_Brochures-documents/HMC5883L_3-Axis_Digital_Compass_IC.pdf
     """
 
     def __init__(self, device=None, bus_addr=0):
-        """Initialize a new instance of the ADXL345.
+        """Initialize a new instance of HMC5883L.
 
         :param raspy.io.i2c.i2c_interface.I2CInterface device: The I2C device
         that represents the physical connection to the gyro. If None, then it
@@ -57,12 +63,17 @@ class ADXL345(MultiAxisGyro):
         self.__aY = AxisGyroscope(self, 20)
         self.__aZ = AxisGyroscope(self, 20)
 
-        self.__address = ADXL345_ADDR
-        if bus_addr and isinstance(bus_addr, int):
+        self.__address = HMC5883L_ADDR
+        if bus_addr is None or not isinstance(bus_addr, int):
             self.__address = bus_addr
 
         self.__timeDelta = 0
         self.__lastRead = 0
+        self.__outputRate = hmc_5883l_output_rate.RATE_15_HZ
+        self.__average = samples.AVERAGE_8
+        self.__measurementMode = measurement_modes.NORMAL_MODE
+        self.__gain = hmc_5883l_gains.GAIN_1_3_GA
+        self.__mode = operation_mode.CONTINUOUS
 
     def dispose(self):
         """Dispose managed resources.
@@ -101,19 +112,14 @@ class ADXL345(MultiAxisGyro):
             self.__z.dispose()
             self.__z = None
 
-        self.__address = None
         self.__timeDelta = 0
         self.__lastRead = 0
+        self.__outputRate = None
+        self.__average = None
+        self.__measurementMode = None
+        self.__gain = None
+        self.__mode = None
         MultiAxisGyro.dispose(self)
-
-    @property
-    def time_delta(self):
-        """Get the time difference (delta) since the last loop.
-
-        :returns: The time delta.
-        :rtype: float
-        """
-        return self.__timeDelta
 
     @property
     def x(self):
@@ -169,6 +175,110 @@ class ADXL345(MultiAxisGyro):
         """
         return self.__aZ
 
+    @property
+    def time_delta(self):
+        """Get the time difference (delta) since the last loop.
+
+        :returns: The time delta.
+        :rtype: float
+        """
+        return self.__timeDelta
+
+    @property
+    def output_rate(self):
+        """Get the output rate (resolution).
+
+        :returns: The output rate.
+        :rtype: int
+        """
+        return self.__outputRate
+
+    @output_rate.setter
+    def output_rate(self, rate):
+        """Set the output rate (resolution).
+
+        :param int rate: The output rate.
+        """
+        if rate is None:
+            rate = hmc_5883l_output_rate.RATE_15_HZ
+        self.__outputRate = rate
+
+    @property
+    def samples_average(self):
+        """Get the average sample rate.
+
+        :returns: The average sample rate.
+        :rtype: int
+        """
+        return self.__average
+
+    @samples_average.setter
+    def samples_average(self, avg):
+        """Set the average sample rate.
+
+        :param int avg: The average sample rate.
+        """
+        if avg is None:
+            avg = samples.AVERAGE_8
+        self.__average = avg
+
+    @property
+    def measurement_mode(self):
+        """Get the measurement mode.
+
+        :returns: The measurement mode.
+        :rtype: int
+        """
+        return self.__measurementMode
+
+    @measurement_mode.setter
+    def measurement_mode(self, mode):
+        """Set the measurement mode.
+
+        :param int mode: The measurement mode.
+        """
+        if mode is None:
+            mode = measurement_modes.NORMAL_MODE
+        self.__measurementMode = mode
+
+    @property
+    def gain(self):
+        """Get the gain level.
+
+        :returns: The gain level.
+        :rtype: int
+        """
+        return self.__gain
+
+    @gain.setter
+    def gain(self, gain_lev):
+        """Set the gain level.
+
+        :param int gain_lev: The gain level.
+        """
+        if gain_lev is None:
+            gain_lev = hmc_5883l_gains.GAIN_1_3_GA
+        self.__gain = gain_lev
+
+    @property
+    def operation_mode(self):
+        """Get the operation mode.
+
+        :returns: The operation mode.
+        :rtype: int
+        """
+        return self.__mode
+
+    @operation_mode.setter
+    def operation_mode(self, mode):
+        """Set the operation mode.
+
+        :param int mode: The operation mode.
+        """
+        if mode is None:
+            mode = operation_mode.CONTINUOUS
+        self.__mode = mode
+
     def enable(self):
         """Enable the gyro.
 
@@ -179,9 +289,9 @@ class ADXL345(MultiAxisGyro):
         gyro.
         """
         if self.is_disposed:
-            raise ObjectDisposedException("ADXL345")
+            raise ObjectDisposedException("HMC5883L")
 
-        packet = [0x31, 0x0B]
+        packet = [2, 0]
         self.__device.write_bytes(self.__address, packet)
 
     def disable(self):
@@ -194,9 +304,17 @@ class ADXL345(MultiAxisGyro):
         gyro.
         """
         if self.is_disposed:
-            raise ObjectDisposedException("ADXL345")
+            raise ObjectDisposedException("HMC5883L")
 
-        # TODO how to disable?
+        byte1 = self.__average << 5
+        byte1 += self.__outputRate << 2
+        byte1 += self.__measurementMode
+        init_packet = [
+            byte1,
+            self.__gain << 5,
+            operation_mode.IDLE
+        ]
+        self.__device.write_bytes(self.__address, init_packet)
 
     def init(self, trig_axis, trig_mode):
         """Initialize the gyro.
@@ -216,8 +334,8 @@ class ADXL345(MultiAxisGyro):
         gyro.
         """
         if trig_axis is None:
-            msg = "trig_axis param cannot be None. Bust be of type "
-            msg += "raspy.components.gyroscopes.gyro.Gyro."
+            msg = "trig_axis param cannot be None. "
+            msg += "Must be of type raspy.components.gyroscopes.gyro.Gyro."
             raise ArgumentNullException(msg)
 
         if trig_mode is None:
@@ -251,14 +369,12 @@ class ADXL345(MultiAxisGyro):
         gyro.
         """
         if self.is_disposed:
-            raise ObjectDisposedException("ADXL345")
+            raise ObjectDisposedException("HMC5883L")
 
         now = system_info.get_current_time_millis()
         self.__timeDelta = now - self.__lastRead
         self.__lastRead = now
 
-        self.__device.write_byte(self.__address, 0x00)
-        core_utils.sleep(10)
         data = self.__device.read_bytes(self.__address, 6)
         if len(data) != 6:
             msg = "Couldn't read compass data; Return buffer size: "
@@ -267,7 +383,7 @@ class ADXL345(MultiAxisGyro):
 
         self.a_x.raw_value = ((data[0] & 0xff) << 8) + (data[1] & 0xff)
         self.a_y.raw_value = ((data[2] & 0xff) << 8) + (data[3] & 0xff)
-        self.a_z.raw_value = ((data[3] & 0xff) << 8) + (data[5] & 0xff)
+        self.a_z.raw_value = ((data[4] & 0xff) << 8) + (data[5] & 0xff)
 
     def recalibrate_offset(self):
         """Recalibrate the offset.
