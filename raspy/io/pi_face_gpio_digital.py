@@ -21,15 +21,13 @@ except ImportError:
     class SpiDev(object):
         """A mock SpiDev class to use when not found (ie. unit tests)."""
 
-        __dev = None
-        __bus = None
-        __speed = None
-        __maxSpeed = 0
-        __buf = list()
-
         def __init__(self):
             """Constructor."""
-            pass
+            self.__dev = None
+            self.__bus = None
+            self.__speed = None
+            self.__maxSpeed = 0
+            self.__buf = list()
 
         def open(self, dev, bus):
             """Open the SPI bus connection.

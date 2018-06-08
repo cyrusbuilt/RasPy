@@ -29,7 +29,7 @@ class RaspiGpio(Gpio):
         :returns: The underlying physical pin.
         :rtype: RasPy.io.GpioPins
         """
-        return gpio_pins.GpioNone
+        return gpio_pins.GpioNone()
 
     def on_pin_state_change(self, psce):
         """Fire the pin state change event.

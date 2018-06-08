@@ -10,6 +10,7 @@ Subpackages
     raspy.components.buzzers
     raspy.components.gyroscopes
     raspy.components.lcd_display
+    raspy.components.lights
 
 Submodules
 ----------

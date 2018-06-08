@@ -1,5 +1,6 @@
 """Implemented by classes that represent GPIO pins on the Raspberry Pi."""
 
+import threading
 import time
 from pyee import EventEmitter
 from raspy import board_revision
@@ -136,9 +137,11 @@ class Gpio(Pin):
         if self.is_disposed:
             raise ObjectDisposedException("Gpio")
 
-        # TODO Emit on a separate thread here? Or maybe just do that from within
-        # emit() itself.
-        self.emit(EVENT_GPIO_STATE_CHANGED, psce)
+        _t = threading.Thread(target=self.emit,
+                              name="stateChange",
+                              args=(EVENT_GPIO_STATE_CHANGED, psce))
+        _t.daemon = True
+        _t.start()
 
     @property
     def revision(self):
@@ -280,4 +283,4 @@ class Gpio(Pin):
         self.__mode = None
         self.__pin = None
         self.__initValue = None
-        super(Gpio, self).dispose()
+        Pin.dispose(self)
