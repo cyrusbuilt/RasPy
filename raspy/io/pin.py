@@ -10,12 +10,11 @@ from raspy.io import pin_mode
 class Pin(Disposable):
     """A physical pin base class."""
 
-    __pinName = string_utils.EMPTY
-    __tag = None
-
     def __init__(self):
         """Initialize a new instance of raspy.io.Pin."""
         super(Disposable, self).__init__()
+        self.__pinName = string_utils.EMPTY
+        self.__tag = None
 
     def dispose(self):
         """Dispose managed resources.
