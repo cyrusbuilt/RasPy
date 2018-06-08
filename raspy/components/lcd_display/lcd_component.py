@@ -85,7 +85,7 @@ class LcdComponent(Lcd):
         self.__module.write_byte(data)
 
     def clear_display(self):
-        """Clears the display."""
+        """Clear the display."""
         self.__module.return_home()
 
     def set_cursor_home(self):

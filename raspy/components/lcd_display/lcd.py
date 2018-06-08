@@ -111,7 +111,7 @@ class Lcd(Component):
         raise NotImplementedError(msg)
 
     def send_cursor_home(self):
-        """Sends the cursor to the home position.
+        """Send the cursor to the home position.
 
         The home position is in the top-left corner (column 0, row 0).
         """
@@ -200,7 +200,7 @@ class Lcd(Component):
         # Compute column index.
         col_index = 0
         if (alignment != lcd_text_alignment.LEFT and
-            len(string) < self.column_count):
+                len(string) < self.column_count):
             remaining = self.column_count - len(string)
             if alignment == lcd_text_alignment.RIGHT:
                 col_index = remaining
