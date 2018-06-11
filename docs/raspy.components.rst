@@ -11,6 +11,7 @@ Subpackages
     raspy.components.gyroscopes
     raspy.components.lcd_display
     raspy.components.lights
+    raspy.components.motors
 
 Submodules
 ----------
