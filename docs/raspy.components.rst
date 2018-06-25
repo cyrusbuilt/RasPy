@@ -12,6 +12,7 @@ Subpackages
     raspy.components.lcd_display
     raspy.components.lights
     raspy.components.motors
+    raspy.components.potentiometers
 
 Submodules
 ----------

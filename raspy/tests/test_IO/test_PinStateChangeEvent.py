@@ -30,10 +30,10 @@ class DummyEmitter(object):
 
     def trigger_event(self):
         """Trigger the state change event."""
-        pinAddress = gpio_pins.Gpio01.value
-        oldState = pin_state.LOW
-        newState = pin_state.HIGH
-        evt = PinStateChangeEvent(oldState, newState, pinAddress)
+        pin_address = gpio_pins.Gpio01.value
+        old_state = pin_state.LOW
+        new_state = pin_state.HIGH
+        evt = PinStateChangeEvent(old_state, new_state, pin_address)
         self.on_pin_state_change(evt)
 
 
