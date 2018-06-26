@@ -13,6 +13,7 @@ Subpackages
     raspy.components.lights
     raspy.components.motors
     raspy.components.potentiometers
+    raspy.components.power
 
 Submodules
 ----------
