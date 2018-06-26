@@ -114,10 +114,10 @@ class GpioPowerComponent(pwr.PowerInterface):
 
         if pwr_state == power_state.OFF:
             self.__output.write(self.__offState)
-            pwr.PowerInterface.state.fset(pwr_state)
+            pwr.PowerInterface.state.fset(self, pwr_state)
         elif pwr_state == power_state.ON:
             self.__output.write(self.__onState)
-            pwr.PowerInterface.state.fset(pwr_state)
+            pwr.PowerInterface.state.fset(self, pwr_state)
         else:
             bad_state = power_utils.get_power_state_name(pwr_state)
             msg = "Cannot set power state: " + bad_state

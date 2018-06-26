@@ -14,6 +14,7 @@ Subpackages
     raspy.components.motors
     raspy.components.potentiometers
     raspy.components.power
+    raspy.components.relays
 
 Submodules
 ----------

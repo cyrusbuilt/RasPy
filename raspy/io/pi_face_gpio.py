@@ -41,9 +41,6 @@ class PiFaceGPIO(gpio.Gpio):
     ]
     """An array of all PiFace inputs."""
 
-    __pwm = 0
-    __pwmRange = 0
-
     def __init__(self, pn, initial_val, name):
         """Initialize a new instance of the raspy.io.PiFaceGPIO class.
 
@@ -56,6 +53,8 @@ class PiFaceGPIO(gpio.Gpio):
         the specified pin is not of type raspy.io.pi_face_pins.PiFacePin.
         """
         gpio.Gpio.__init__(self, pn, pin_mode.IN, initial_val)
+        self.__pwm = 0
+        self.__pwmRange = 0
 
         if pn is None:
             raise ArgumentNullException("pn param cannot be NonePin.")
