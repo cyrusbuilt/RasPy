@@ -15,6 +15,7 @@ Subpackages
     raspy.components.potentiometers
     raspy.components.power
     raspy.components.relays
+    raspy.components.sensors
 
 Submodules
 ----------
