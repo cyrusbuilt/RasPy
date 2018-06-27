@@ -16,6 +16,7 @@ Subpackages
     raspy.components.power
     raspy.components.relays
     raspy.components.sensors
+    raspy.components.switches
 
 Submodules
 ----------
