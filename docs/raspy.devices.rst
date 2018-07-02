@@ -1,6 +1,13 @@
 raspy.devices package
 =====================
 
+Subpackages
+-----------
+
+.. toctree::
+
+    raspy.devices.access
+
 Submodules
 ----------
 

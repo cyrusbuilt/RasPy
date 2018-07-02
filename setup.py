@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 
+import platform
 import sys
+import time
 from io import open
 from setuptools import setup, find_packages
 from raspy import RASPY_FRAMEWORK_VER
@@ -9,6 +11,12 @@ from raspy import RASPY_FRAMEWORK_VER
 if sys.version_info < (2, 7):
     print("ERROR: python version < 2.7 is not supported.")
     sys.exit(1)
+
+if platform.system() != "Linux":
+    msg = "WARNING: This library intended to be installed on a Linux-based"
+    msg += " Raspberry Pi. Installation may fail.\n"
+    print(msg)
+    time.sleep(3)
 
 install_requires = [
     'pyee',
