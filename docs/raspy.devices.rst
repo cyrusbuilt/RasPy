@@ -7,6 +7,7 @@ Subpackages
 .. toctree::
 
     raspy.devices.access
+    raspy.devices.fireplaces
 
 Submodules
 ----------

@@ -4,18 +4,18 @@ raspy.devices.access package
 Submodules
 ----------
 
-raspy.devices.access.OpenerDevice module
-----------------------------------------
-
-.. automodule:: raspy.devices.access.OpenerDevice
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
 raspy.devices.access.opener module
 ----------------------------------
 
 .. automodule:: raspy.devices.access.opener
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+raspy.devices.access.opener\_device module
+------------------------------------------
+
+.. automodule:: raspy.devices.access.opener_device
     :members:
     :undoc-members:
     :show-inheritance:
