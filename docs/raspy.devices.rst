@@ -10,6 +10,7 @@ Subpackages
     raspy.devices.fireplaces
     raspy.devices.garages
     raspy.devices.gates
+    raspy.devices.pibrella
 
 Submodules
 ----------
