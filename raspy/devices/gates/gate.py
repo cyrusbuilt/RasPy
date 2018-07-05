@@ -1,19 +1,19 @@
-"""This module contains the GarageDoorOpener type."""
+"""This module contains the Gate type."""
 
 
 from raspy.devices.access.opener import Opener
 
 
-class GarageDoorOpener(Opener):
+class Gate(Opener):
     """Garage door opener abstraction interface/base type."""
 
     def __init__(self):
-        """Initialize a new instance of GarageDoorOpener."""
+        """Initialize a new instance of Gate."""
         Opener.__init__(self)
 
     @property
     def is_locked(self):
-        """Get a flag indicating whether this opener is locked.
+        """Get a flag indicating whether this gate is locked.
 
         :returns: True if locked; Otherwise, False.
         :rtype: bool
