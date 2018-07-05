@@ -8,6 +8,7 @@ Subpackages
 
     raspy.devices.access
     raspy.devices.fireplaces
+    raspy.devices.garages
 
 Submodules
 ----------
