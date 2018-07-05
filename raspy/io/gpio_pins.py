@@ -445,6 +445,17 @@ class V2Gpio02(GpioPin):
     name = "V2Gpio02"
 
 
+class V2Gpio03(GpioPin):
+    """Rev 2 GPIO 03 (P1-05)."""
+
+    def __init__(self):
+        """ctor."""
+        GpioPin.__init__(self)
+
+    value = 3
+    name = "V2Gpio03"
+
+
 class V2Gpio04(GpioPin):
     """Rev 2 GPIO 04 (pin P1-07)."""
 
