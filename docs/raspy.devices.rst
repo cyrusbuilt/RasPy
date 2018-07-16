@@ -11,6 +11,7 @@ Subpackages
     raspy.devices.garages
     raspy.devices.gates
     raspy.devices.pibrella
+    raspy.devices.picamera
 
 Submodules
 ----------
