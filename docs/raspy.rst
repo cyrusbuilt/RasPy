@@ -34,6 +34,14 @@ raspy.bcm\_2835\_pwm\_clock\_divider module
     :undoc-members:
     :show-inheritance:
 
+raspy.bitset module
+-------------------
+
+.. automodule:: raspy.bitset
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 raspy.board\_revision module
 ----------------------------
 

@@ -16,6 +16,7 @@ __all__ = (
     "RASPY_FRAMEWORK_VER",
     "argument_null_exception",
     "bcm_2835_pwm_clock_divider",
+    "bitset",
     "board_revision",
     "disposable",
     "exec_utils",
